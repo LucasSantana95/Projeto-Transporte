@@ -1,9 +1,8 @@
+import React from 'react'
 import * as S from './styles'
 
-export const Button = () =>{
+export const Button = ({children} : {children : string}) =>{
     return (
-        <S.Container>
-            Teste
-        </S.Container>
+        <S.Container>{children}</S.Container>
     )
 }
