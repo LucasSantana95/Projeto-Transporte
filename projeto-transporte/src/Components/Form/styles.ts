@@ -18,3 +18,5 @@ export const Title = styled.h1`
 export const SubTitle = styled.h3`
 
 `
+export const Button = styled.button`
+`

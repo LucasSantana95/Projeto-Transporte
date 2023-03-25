@@ -1,7 +1,7 @@
 import StudentModel from "../models/StudentModel";
 
 interface IStudent {
-    id? : String,
+    _id? : String,
     name: String,
     school: String,
     shift: String,
@@ -23,7 +23,7 @@ export const createStudent = async (student : IStudent) =>{
     return response
 }
 export const updateStudent = async (changedStudent : IStudent) =>{
-    const response = await StudentModel.findByIdAndUpdate(changedStudent.id,changedStudent)
+    const response = await StudentModel.findByIdAndUpdate(changedStudent._id,changedStudent)
  console.log("response ", response);
     return response
 }

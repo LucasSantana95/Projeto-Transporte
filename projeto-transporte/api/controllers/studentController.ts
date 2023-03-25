@@ -6,7 +6,8 @@ export const get = async (req: Request, res: Response) => {
     res.send(students)
 }
 export const getById = async (req: Request, res: Response) => {
-    const student = await studentServices.getStudentById(req.body.id)
+    const student = await studentServices.getStudentById(req.params.id)
+    res.send(student)
 }
 export const post = async (req: Request, res: Response) => {
     const newStudent = await studentServices.createStudent(req.body)
