@@ -1,7 +1,7 @@
 import * as S from './styles'
 
-export const Button = ({children} : {children : string}) =>{
+export const Button = ({children , onClick} : {children : string , onClick : ()=> void}) =>{
     return (
-        <S.Container>{children}</S.Container>
+        <S.Container onClick={onClick}>{children}</S.Container>
     )
 }

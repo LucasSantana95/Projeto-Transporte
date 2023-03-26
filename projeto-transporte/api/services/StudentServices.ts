@@ -6,12 +6,12 @@ interface IStudent {
     school: String,
     shift: String,
     address: String,
-    value : Number
+    value : Number,
+    user : String
 }
 
 export const  getStudents = async () =>{
     const students = await StudentModel.find()
-    console.log("students service ", students);
     return students
 }
 export const getStudentById = async (id : String) =>{
@@ -24,7 +24,6 @@ export const createStudent = async (student : IStudent) =>{
 }
 export const updateStudent = async (changedStudent : IStudent) =>{
     const response = await StudentModel.findByIdAndUpdate(changedStudent._id,changedStudent)
- console.log("response ", response);
     return response
 }
 export const deleteStudent = async (id : String) =>{

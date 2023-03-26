@@ -15,9 +15,7 @@ export const post = async (req: Request, res: Response) => {
 }
 export const put = async (req: Request, res: Response) => {
     const student = req.body
-    console.log("student ", student);
     const changedStudent = await studentServices.updateStudent(student)
-    console.log("changedStudent ", changedStudent);
     res.send(changedStudent)
 }
 export const deleteStudent = async (req: Request, res: Response) => {

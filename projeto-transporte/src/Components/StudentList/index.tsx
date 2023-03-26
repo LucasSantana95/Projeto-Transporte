@@ -9,15 +9,14 @@ export const StudentList = () =>{
     const [students, setStudents] = useState<IStudent[]>()
     
     useEffect(()=>{
+        const user = localStorage.getItem('loggedUser')
         const getStudents = async () =>{
             const allStudents = (await StudentServices.getStudents()).data
-            setStudents(allStudents)
+            const thisUserStudents = allStudents.filter((student : IStudent)=>{ return student.user === user})
+            setStudents(thisUserStudents)
         }
         getStudents()
     },[])
-    useEffect(()=>{
-        console.log(students)
-    },[students])
     return (
         <S.Container>
             <BackButton/>

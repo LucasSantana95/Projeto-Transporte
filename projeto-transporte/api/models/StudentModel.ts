@@ -5,7 +5,8 @@ const StudentModel = new Schema({
     school: String,
     shift: String,
     address: String,
-    value : Number
+    value : Number,
+    user : String
 })
 
 export default model('Student', StudentModel)

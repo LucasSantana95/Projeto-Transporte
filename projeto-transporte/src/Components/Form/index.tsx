@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { StudentServices } from '../../Services/StudentServices'
 import { IStudent } from '../../Interfaces/IStudent'
-import { StudentContext } from '../../Contexts/StudentContext'
 
-export const Form = ({ changedStudent }: { changedStudent: IStudent }) => {
+export const Form = ({ changedStudent }: { changedStudent: IStudent | undefined }) => {
     const [student, setStudent] = useState<IStudent>()
 
     const navigate = useNavigate()
@@ -15,6 +14,7 @@ export const Form = ({ changedStudent }: { changedStudent: IStudent }) => {
     }
     const handleOnClick = (e: React.MouseEvent) => {
         e.preventDefault()
+        console.log("student ", student);
         if(changedStudent && student){
             console.log(student)
             StudentServices.updateStudent(student)
@@ -28,6 +28,11 @@ export const Form = ({ changedStudent }: { changedStudent: IStudent }) => {
     useEffect(() => {
         if (changedStudent) {
             setStudent(changedStudent)
+        }
+        const user = localStorage.getItem('loggedUser')
+        console.log("user ", user);
+        if(user){
+            setStudent({...student, user : user})
         }
     }, [])
     return (

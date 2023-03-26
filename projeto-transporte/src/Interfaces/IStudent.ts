@@ -5,4 +5,5 @@ export interface IStudent {
     shift? : string,
     address? : string,
     value? : number
+    user? : string
 }
