@@ -51,6 +51,7 @@ export const Login = () =>{
                 <Input inputType='password' inputName='password' key='password' label='Senha: ' onChange={handleOnChange}/>
                 <S.LoginMessage loginTheme={isLoggedSuccessfully}>{loginMessage}</S.LoginMessage>
                 <Button onClick={handleOnClick}>Entrar</Button>
+                <Button onClick={()=>{navigate('/signin')}}>Resgistrar</Button>
             </S.Content>
         </S.Container>
     )

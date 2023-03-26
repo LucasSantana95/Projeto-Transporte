@@ -17,3 +17,10 @@ export const post = async (req : Request, res : Response) =>{
         res.send(false)
     }
 }
+export const create = async (req : Request, res : Response) =>{
+    const response = await UserService.createUser(req.body)
+    if(response){
+        res.statusMessage = response
+    }
+    res.send(response)
+}

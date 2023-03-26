@@ -21,3 +21,13 @@ export const findUser = async (user : IUser) => {
         return "Usuário incorreto"
     }
 }
+export const createUser = async (user : IUser) =>{
+    const response = await UserModel.findOne({user : user.user})
+    if(response){
+        return "Error"
+    }
+    const createdUser = await UserModel.create(user)
+    if(createdUser){
+        return "OK"
+    }
+}
