@@ -3,8 +3,9 @@ import { AddStudent } from '../Pages/AddStudent'
 import { Home } from '../Pages/Home'
 import { LoginPage } from '../Pages/Login'
 import { SignInPage } from '../Pages/SignIn'
-import { StartRoute } from '../Pages/StartRoute'
+import { StartRoutePage } from '../Pages/StartRoute'
 import { StudentsList } from '../Pages/StudentsList'
+import { AttendingStudentsPage } from '../Pages/AttendingStudents'
 
 export const Router = () =>{
     return (
@@ -14,7 +15,8 @@ export const Router = () =>{
             <Route path={'/home'} element={<Home/>}/>
             <Route path={'/addstudent'} element={<AddStudent/>}/>
             <Route path={'/students'} element={<StudentsList/>}/>
-            <Route path={'/startroute'} element={<StartRoute/>}/>
+            <Route path={'/startroute'} element={<StartRoutePage/>}/>
+            <Route path={'/attendingstudents'} element={<AttendingStudentsPage/>}/>
         </Routes>
     )
 }
