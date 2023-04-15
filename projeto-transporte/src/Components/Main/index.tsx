@@ -2,24 +2,25 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as S from './styles'
 
-export const Main = () =>{
+export const Main = () => {
+
     const [user, setUser] = useState<string>('')
     const navigate = useNavigate()
-    const handleOnClick = () =>{
+    const handleOnClick = () => {
         localStorage.removeItem('logged')
         localStorage.removeItem('loggedUser')
         navigate('/')
     }
-    useEffect(()=>{
-        if(localStorage.getItem('logged') === 'true'){
+    useEffect(() => {
+        if (localStorage.getItem('logged') === 'true') {
             const user = localStorage.getItem('loggedUser')
-            if(user){
+            if (user) {
                 setUser(user)
             }
-        }else{
+        } else {
             navigate('/')
         }
-    },[])
+    }, [])
     return (
         <S.Container>
             <button onClick={handleOnClick}>Sair</button>
