@@ -10,12 +10,14 @@ export const StudentList = () =>{
     
     useEffect(()=>{
         const user = localStorage.getItem('loggedUser')
-        const getStudents = async () =>{
-            const allStudents = (await StudentServices.getStudents()).data
-            const thisUserStudents = allStudents.filter((student : IStudent)=>{ return student.user === user})
-            setStudents(thisUserStudents)
+        if(user){
+            const getStudents = async () =>{
+                const allStudents = (await StudentServices.getStudents()).data
+                const thisUserStudents = allStudents.filter((student : IStudent)=>{ return student.user === JSON.parse(user).name})
+                setStudents(thisUserStudents)
+            }
+            getStudents()
         }
-        getStudents()
     },[])
     return (
         <S.Container>

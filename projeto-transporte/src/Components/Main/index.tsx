@@ -15,7 +15,7 @@ export const Main = () => {
         if (localStorage.getItem('logged') === 'true') {
             const user = localStorage.getItem('loggedUser')
             if (user) {
-                setUser(user)
+                setUser( JSON.parse(user).displayName )
             }
         } else {
             navigate('/')

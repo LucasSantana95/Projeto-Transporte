@@ -7,6 +7,7 @@ import { INewUser } from '../../Interfaces/INewUser'
 import { useNavigate } from 'react-router-dom'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
+import { IGoogleUser } from '../../Interfaces/IGoogleUser'
 
 export const SignIn = () =>{
     const [newUser, setNewUser] = useState<INewUser>()
@@ -19,7 +20,7 @@ export const SignIn = () =>{
     }
     const handleGoogleResponse = async (response : CredentialResponse) =>{
         if(response.credential){
-            const user = jwt_decode(response.credential)
+            const user : IGoogleUser = jwt_decode(response.credential)
             const res = await UserServices.registerUserWithGoogle(user.email)
             if(res){
                 setCreateMessage('Usuário Cadastrado com Sucesso!')

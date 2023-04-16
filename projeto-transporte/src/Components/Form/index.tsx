@@ -33,7 +33,7 @@ export const Form = ({ changedStudent }: { changedStudent: IStudent | undefined 
         const user = localStorage.getItem('loggedUser')
         console.log("user ", user);
         if (user) {
-            setStudent({ ...student, user: user })
+            setStudent({ ...student, user: JSON.parse(user).email })
         }
     }, [])
     return (

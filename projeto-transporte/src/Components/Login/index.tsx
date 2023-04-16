@@ -7,6 +7,7 @@ import * as S from './styles'
 import { useNavigate } from 'react-router-dom'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
+import {IGoogleUser} from '../../Interfaces/IGoogleUser'
 
 export const Login = () =>{
     const [user, setUser] = useState<IUser>()
@@ -23,13 +24,14 @@ export const Login = () =>{
     }
     const handleGoogleResponse = async (response : CredentialResponse) =>{
         if(response.credential){
-            const googleUser = jwt_decode(response.credential)
+            const googleUser : IGoogleUser = jwt_decode(response.credential)
+            console.log("googleUser ", googleUser);
             if(await UserServices.loginUserWithGoogle(googleUser.email)){
                 setLoginMessage("Logado com sucesso!")
                 handleToggleLogged()
                 setTimeout(() => {
                     localStorage.setItem('logged', "true")
-                    localStorage.setItem('loggedUser', googleUser.name ? googleUser.name : '')
+                    localStorage.setItem('loggedUser', JSON.stringify({displayName :googleUser.name, name: googleUser.email}) )
                     navigate('/home')
                 }, 3000);
             }
@@ -44,7 +46,7 @@ export const Login = () =>{
                 handleToggleLogged()
                 setTimeout(() => {
                     localStorage.setItem('logged', "true")
-                    localStorage.setItem('loggedUser', user.user ? user.user : '')
+                    localStorage.setItem('loggedUser', JSON.stringify({displayName :user.user, name: user.user}))
                     navigate('/home')
                 }, 3000);
             }else{
